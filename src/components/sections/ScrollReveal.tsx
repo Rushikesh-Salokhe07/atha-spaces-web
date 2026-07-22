@@ -1,7 +1,11 @@
 "use client";
 
-import { motion, Variant } from "framer-motion";
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
+
+// framer-motion's TargetAndTransition union is huge; using a loose type
+// and casting at the prop site avoids TS "union too complex" errors.
+type AnimState = Record<string, string | number>;
 
 type RevealVariant =
   | "up"
@@ -26,7 +30,7 @@ interface ScrollRevealProps {
 
 const variantMap: Record<
   RevealVariant,
-  { initial: Variant; easing: number[] | string }
+  { initial: AnimState; easing: number[] | string }
 > = {
   up: {
     initial: { opacity: 0, y: 50, filter: "blur(3px)" },
@@ -74,7 +78,7 @@ const variantMap: Record<
   },
 };
 
-const finalState: Variant = {
+const finalState: AnimState = {
   opacity: 1,
   y: 0,
   x: 0,
@@ -95,8 +99,8 @@ export default function ScrollReveal({
 
   return (
     <motion.div
-      initial={variant.initial}
-      whileInView={finalState}
+      initial={variant.initial as never}
+      whileInView={finalState as never}
       viewport={{ once: true, margin: "-60px" }}
       transition={{
         duration,
