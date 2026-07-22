@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variant } from "framer-motion";
 import { ReactNode } from "react";
 
 type RevealVariant =
@@ -26,7 +26,7 @@ interface ScrollRevealProps {
 
 const variantMap: Record<
   RevealVariant,
-  { initial: Record<string, unknown>; easing: number[] | string }
+  { initial: Variant; easing: number[] | string }
 > = {
   up: {
     initial: { opacity: 0, y: 50, filter: "blur(3px)" },
@@ -74,7 +74,7 @@ const variantMap: Record<
   },
 };
 
-const finalState: Record<string, unknown> = {
+const finalState: Variant = {
   opacity: 1,
   y: 0,
   x: 0,
