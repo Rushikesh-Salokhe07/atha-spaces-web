@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   ATHA SPACES — Global Styles
+   Pretext-inspired editorial aesthetic + cozy warmth
+   ═══════════════════════════════════════════════════ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+  }
+
+  ::selection {
+    @apply bg-brand-200/60 text-brand-900;
+  }
+
+  /* Pretext-style typographic rhythm */
+  h1, h2, h3, h4 {
+    font-family: var(--font-playfair), Georgia, serif;
+    @apply text-gray-900;
+  }
+
+  p {
+    @apply text-body-md text-gray-600;
+  }
+}
+
+@layer components {
+  /* ── Pretext-style label/overline ── */
+  .pretext-label {
+    @apply text-overline font-semibold uppercase tracking-[0.12em] text-brand-500;
+  }
+
+  /* ── Pretext-style section header combo ── */
+  .pretext-heading {
+    @apply font-display text-display-sm sm:text-display-md lg:text-display-lg text-gray-900 tracking-tight text-balance;
+  }
+
+  .pretext-subheading {
+    @apply text-body-lg text-gray-500 max-w-xl leading-relaxed;
+  }
+
+  /* ── Pretext divider — thin elegant line ── */
+  .pretext-divider {
+    @apply w-12 h-px bg-warm-400/40 mx-auto my-6;
+  }
+
+  /* ── Cozy card (warm shadow, subtle border, cream feel) ── */
+  .cozy-card {
+    @apply rounded-3xl border border-warm-200/60 bg-white shadow-cozy
+           transition-all duration-300 hover:shadow-warm-lg hover:-translate-y-1;
+  }
+
+  /* ── Warm section backgrounds ── */
+  .bg-cozy {
+    @apply bg-surface-cozy;
+  }
+
+  .bg-linen {
+    @apply bg-surface-linen;
+  }
+
+  /* ── Shelf-mounted element ── */
+  .shelf-card {
+    @apply relative bg-white rounded-2xl shadow-shelf border border-warm-100;
+  }
+  .shelf-card::after {
+    content: '';
+    @apply absolute -bottom-2 left-4 right-4 h-2 bg-warm-300/20 rounded-b-xl blur-sm;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient text helper */
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent;
+  }
+
+  /* Warm gradient text */
+  .gradient-text-warm {
+    @apply bg-gradient-to-r from-brand-500 to-brand-400 bg-clip-text text-transparent;
+  }
+
+  /* Glass morphism card */
+  .glass {
+    @apply bg-white/60 backdrop-blur-xl border border-white/20 shadow-lg;
+  }
+
+  /* Architectural blueprint line pattern */
+  .blueprint-pattern {
+    background-image:
+      linear-gradient(rgba(192, 118, 107, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(192, 118, 107, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── Linen / paper texture overlay ── */
+  .texture-linen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Warm noise grain overlay ── */
+  .texture-grain::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.5'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    animation: grain 8s steps(10) infinite;
+  }
+
+  /* ── Warm radial glow ── */
+  .glow-warm {
+    background: radial-gradient(ellipse at center, rgba(192, 118, 107, 0.08) 0%, transparent 70%);
+  }
+}
+
+/* === Scrollbar styling === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdfbf7;
+}
+::-webkit-scrollbar-thumb {
+  background: #c98b82;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C0766B;
+}
